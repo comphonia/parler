@@ -61,6 +61,7 @@ btn:hover {
     border: none;
     padding: 5px 20px;
     background-color: #1F2124;
+    color: #97A6B2;
 }
 
 #searchbox::placeholder {
@@ -115,13 +116,24 @@ btn:hover {
     background-color: #fff;
     border-radius: 10px;
     max-width: 90%;
+}
 
+.from-msg{
+    color: #fff;
+    background-color: #27ae60;
 }
 
 
 .user-avatar {
+    width: 100%;
+    height: 60px;
     padding: 10px;
     transition: all .2s ease-in-out;
+}
+
+.user-info-avatar{
+    width: 100%;
+    height: 300px;
 }
 
 .user-avatar:hover {
@@ -130,19 +142,19 @@ btn:hover {
 }
 
 .user-avatar img,
-.user-chat-avatar img {
+.user-chat-avatar img ,.user-info-avatar img{
     border-radius: 50%;
 }
 
 .active-icon {
-    width: 15px;
-    height: 15px;
-    background-color: forestgreen;
+    width: 12px;
+    height: 12px;
+    background-color: limegreen;
     border-radius: 50%;
     position: relative;
     top: -15px;
     left: -5px;
-    border: solid 2px #2E3035;
+    border: solid 1px #2E3035;
 }
 
 .control-item {
