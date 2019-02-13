@@ -85,7 +85,7 @@ btn:hover {
     color: #97A6B2;
 }
 
-#msgbox {
+.msgbox {
     position: relative;
     height: 100%;
     width: 100%;

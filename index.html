@@ -47,11 +47,11 @@
                 </div>
             </div>
             <div class="mid-col d-flex flex-column">
-                <div class="chat px-3 py-2">
+                <div class="chat px-3 py-2" id="messages">
                     <div class="h3 p-2">John Doe <span class="text-muted f05">online</span></div>
                     <hr>
 
-                    <div class="d-flex align-items-start flex-column">
+                    <!-- <div class="d-flex align-items-start flex-column">
                         <div class="col-xl-6 chat-block d-flex">
                             <div class="user-chat-avatar">
                                 <img src="assets/imgs/avatar.jpg" class="img-fluid">
@@ -69,7 +69,7 @@
                                 <div class="active-icon float-right"></div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!--            End Chat Area-->
                 </div>
@@ -80,8 +80,8 @@
                     <btn class="msgbtn">
                         <i class="fas fa-paperclip" id="attchbtn"></i>
                     </btn>
-                    <div class="form-item"><input class="" type="text" id="msgbox" placeholder="Type Message"></div>
-                    <btn class="msgbtn ml-auto">
+                    <div class="form-item"><input class="msgbox" type="text" id="message" placeholder="Type Message"></div>
+                    <btn class="msgbtn ml-auto" id="send">
                         <i class="fas fa-arrow-alt-circle-right text-success" id="sendbtn"></i>
                     </btn>
                 </div>
@@ -103,6 +103,44 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+      var socket = io()
+      $(()=>{
+      
+        $("#send").click(()=>{
+          var message = {message: $('#message').val()}
+          postMessag(message)
+        })
+        getMessages()
+      })
+
+      socket.on('message',addMessage)
+
+      function addMessage(message){
+        $("#messages").append(`<div class="d-flex align-items-end flex-column">
+                        <div class="col-xl-6 chat-block d-flex justify-content-end">
+                            <p class="user-chat-message from-msg">${message.message}</p>
+                            <div class="user-chat-avatar">
+                                <img src="assets/imgs/comp.png" class="img-fluid">
+                                <div class="active-icon float-right"></div>
+                            </div>
+                        </div>
+                    </div>`)
+      }
+
+      function getMessages(){
+        $.get('http://localhost:3000/messages', data =>{
+          data.forEach(addMessage)
+        })
+      }
+
+      
+      function postMessag(message){
+        $.post('http://localhost:3000/messages',message)
+      }
+    </script>
 </body>
 
 </html>

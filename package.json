@@ -1,0 +1,26 @@
+{
+  "name": "piechat",
+  "version": "1.0.0",
+  "description": "A realtime chat app for developers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comphonia/parler.git"
+  },
+  "author": "comphonia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/comphonia/parler/issues"
+  },
+  "homepage": "https://github.com/comphonia/parler#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.11",
+    "socket.io": "^2.2.0"
+  }
+}
